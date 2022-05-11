@@ -1,0 +1,31 @@
+import 'package:mqtt_client/mqtt_client.dart';
+import 'package:mqtt_client/mqtt_server_client.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+
+//Single devices widget
+bool switchValue = true;
+String commandMessage = "";
+// String switchState = "OFF";
+int commandDigit = 0;
+
+//Add Devices Screen
+List<String> devicesIDsTemp = <String>[];
+List<String> devicesNamesTemp = <String>[];
+List<String> devicesStateTemp = <String>[];
+
+//Devices List Screen
+// int index = 0;
+// int devicesCount = 0;
+// String msg = "Devices added";
+// List<String> devicesIDs = <String>[];
+// List<String> devicesNames = <String>[];
+// final List<int> msgCount = <int>[];
+
+//MQTT EMQX Functions
+final client =
+    MqttServerClient.withPort('broker.emqx.io', 'flutter_client', 1883);
+var pongCount = 0, connStatus = 0;
+const pubTopic = 'Nurowm/Ncommand';
+final builder = MqttClientPayloadBuilder();
+const subTopic = 'Nurowm/Nresponse';
+// var pt = '';
