@@ -58,6 +58,7 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
       );
     } else {
       return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
           floatingActionButton: FloatingActionButton(
             heroTag: "btn2",

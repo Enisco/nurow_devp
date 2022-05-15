@@ -86,8 +86,7 @@ Future<void> mqttConnect() async {
       1;
 
   // return switchState;
-    return;
-
+  return;
 }
 
 //------------------------------------------------------------------------------ *

@@ -23,9 +23,9 @@ List<String> devicesStateTemp = <String>[];
 
 //MQTT EMQX Functions
 final client =
-    MqttServerClient.withPort('broker.emqx.io', 'flutter_client', 1883);
+    MqttServerClient.withPort('broker.emqx.io', 'nurowapp_client123456789', 1883);
 var pongCount = 0, connStatus = 0;
-const pubTopic = 'Nurowm/Ncommand';
+const pubTopic = 'Nurowapp/Appcommand';
 final builder = MqttClientPayloadBuilder();
-const subTopic = 'Nurowm/Nresponse';
+const subTopic = 'Nurowapp/Appresponse';
 // var pt = '';
