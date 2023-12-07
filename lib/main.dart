@@ -1,7 +1,5 @@
-// @dart=2.9
-
 import 'package:flutter/material.dart';
-import 'principal_screens/nurow_devices_homepage.dart';
+import 'views/nurow_devices_homepage.dart';
 import 'components/mqtt_emqx_funcs.dart';
 
 void main() {
@@ -17,7 +15,7 @@ class NurowApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.purple,
+        primaryColor: Colors.teal,
         indicatorColor: Colors.white,
         primaryColorDark: Colors.black26,
         primaryIconTheme: const IconThemeData(
@@ -26,8 +24,7 @@ class NurowApp extends StatelessWidget {
         ),
       ),
       title: "Smart Devices Control",
-      home:
-          const NurowDevicesHomepage(), //homepage where available devices will be shown
+      home: const NurowDevicesHomepage(),
     );
   }
 }

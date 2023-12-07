@@ -6,21 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:nurow_devp/components/mqtt_emqx_funcs.dart';
 
-class SingleDeviceWidget extends StatefulWidget {
+class ExtensionBoxWidget extends StatefulWidget {
   final String? deviceName;
   final String? deviceID;
 
-  const SingleDeviceWidget({
+  const ExtensionBoxWidget({
     key,
     this.deviceName,
     this.deviceID,
   }) : super(key: key);
 
   @override
-  State<SingleDeviceWidget> createState() => _SingleDeviceWidgetState();
+  State<ExtensionBoxWidget> createState() => _ExtensionBoxWidgetState();
 }
 
-class _SingleDeviceWidgetState extends State<SingleDeviceWidget> {
+class _ExtensionBoxWidgetState extends State<ExtensionBoxWidget> {
   int? commandDigit = 0;
   String commandMessage = "";
 

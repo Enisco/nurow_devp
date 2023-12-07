@@ -9,7 +9,7 @@ class AboutPage extends StatelessWidget {
       appBar: AppBar(
         // leading: const Icon(Icons.settings),
         title: const Text("About"),
-        backgroundColor: Colors.purple[700],
+        backgroundColor: Colors.teal[700],
       ),
       body: const AboutHome(),
     );
@@ -30,7 +30,7 @@ class _AboutHomeState extends State<AboutHome> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.purple[700],
+      backgroundColor: Colors.teal[700],
       body: Stack(
         // ignore: prefer_const_literals_to_create_immutables
         children: [

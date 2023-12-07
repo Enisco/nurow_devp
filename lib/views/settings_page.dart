@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -10,7 +9,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         // leading: const Icon(Icons.settings),
         title: const Text("Settings"),
-        backgroundColor: Colors.purple[700],
+        backgroundColor: Colors.teal[700],
       ),
     );
   }
