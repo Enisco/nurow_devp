@@ -6,34 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:nurow_devp/components/variables_constant.dart';
+import 'package:nurow_devp/helpers/hive_helper.dart';
+import 'package:nurow_devp/models/annot_devices_data_model.dart';
+import 'package:nurow_devp/models/devices_data_model.dart';
 import 'package:nurow_devp/views/nurow_devices_homepage.dart';
-
-class DevicesData {
-  String? deviceName;
-  String? deviceID;
-  bool? isExtensionBox;
-  List<int> deviceStates = [];
-
-  DevicesData({
-    required this.deviceID,
-    required this.deviceName,
-    required this.isExtensionBox,
-    required this.deviceStates,
-  });
-
-  DevicesData copyWith({
-    String? deviceID,
-    String? deviceName,
-    bool? isExtensionBox,
-    List<int>? deviceStates,
-  }) =>
-      DevicesData(
-        deviceID: deviceID ?? this.deviceID,
-        deviceName: deviceName ?? this.deviceName,
-        isExtensionBox: isExtensionBox ?? this.isExtensionBox,
-        deviceStates: deviceStates ?? this.deviceStates,
-      );
-}
 
 class AddDevicePage extends StatefulWidget {
   const AddDevicePage({key}) : super(key: key);
@@ -87,6 +63,14 @@ class _AddDevicePageState extends State<AddDevicePage> {
               color: Colors.white,
             ),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.chevron_left_rounded,
+                color: Colors.white,
+              )),
           backgroundColor: Colors.teal,
         ),
         body: SingleChildScrollView(
@@ -228,6 +212,15 @@ class _AddDevicePageState extends State<AddDevicePage> {
                   ),
                   Switch(
                     value: isExtensionBox,
+                    thumbColor: MaterialStateProperty.resolveWith((states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.red;
+                      }
+                      return Colors.white;
+                    }),
+                    activeColor: Colors.teal,
+                    activeTrackColor: Colors.teal,
+                    inactiveThumbColor: Colors.grey,
                     onChanged: (val) {
                       setState(
                         () {
@@ -262,6 +255,19 @@ class _AddDevicePageState extends State<AddDevicePage> {
                           isExtensionBox: isExtensionBox,
                         );
                         myDevices.add(newDevice);
+
+                        // Save locally
+                        List<AnnotatedDevicesData> devicesToSave = [];
+                        for (var dev in myDevices) {
+                          AnnotatedDevicesData data = AnnotatedDevicesData(
+                            deviceID: dev.deviceID,
+                            deviceName: dev.deviceName,
+                            deviceStates: [0],
+                            isExtensionBox: dev.isExtensionBox,
+                          );
+                        }
+                        HiveHelper.saveDevicesLocally(devicesToSave);
+
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

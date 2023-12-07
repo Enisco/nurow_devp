@@ -1,4 +1,4 @@
-// import 'dart:ffi';
+// // // import 'dart:ffi';
 
 // ignore_for_file: avoid_print, must_be_immutable
 
@@ -29,6 +29,10 @@ class _SingleDeviceWidgetState extends State<SingleDeviceWidget> {
     Size size = MediaQuery.of(context).size;
 
     return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 10,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -38,19 +42,18 @@ class _SingleDeviceWidgetState extends State<SingleDeviceWidget> {
         borderRadius: const BorderRadius.all(Radius.circular(15.0)),
       ),
       width: size.width - 10.0,
-      height: 60.0,
-      child: ListTile(
-        leading: Text(
-          widget.deviceName!,
-          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),
-        ),
-        trailing: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: 35.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            widget.deviceName!,
+            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),
+          ),
+          SizedBox(
+            height: 45.0,
             child: LiteRollingSwitch(
               textSize: 10.0,
-              width: 75,
+              width: 80,
               value: false,
               textOn: "ON",
               textOff: "OFF",
@@ -75,7 +78,7 @@ class _SingleDeviceWidgetState extends State<SingleDeviceWidget> {
               },
             ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nurow_devp/components/extension_box_widget.dart';
 // // // ignore: import_of_legacy_library_into_null_safe
 import 'views/add_device.dart';
 import 'components/single_devices_widget.dart';
@@ -58,7 +59,10 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
               addNewDevice();
             },
             backgroundColor: Colors.teal[700],
-            child: const Icon(Icons.add),
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
           ),
           body: Column(
             children: <Widget>[
@@ -78,12 +82,17 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
                         ),
                       ),
                       child: SizedBox(
-                        height: 60.0,
+                        // height: 60.0,
                         width: size.width - 10.0,
-                        child: SingleDeviceWidget(
-                          deviceName: myDevices[index].deviceName,
-                          deviceID: myDevices[index].deviceID,
-                        ),
+                        child: myDevices[index].isExtensionBox == true
+                            ? ExtensionBoxWidget(
+                                deviceName: myDevices[index].deviceName,
+                                deviceID: myDevices[index].deviceID,
+                              )
+                            : SingleDeviceWidget(
+                                deviceName: myDevices[index].deviceName,
+                                deviceID: myDevices[index].deviceID,
+                              ),
                       ),
                     );
                   },

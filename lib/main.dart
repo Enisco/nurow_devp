@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:nurow_devp/components/variables_constant.dart';
+import 'package:nurow_devp/models/annot_devices_data_model.dart';
 import 'views/nurow_devices_homepage.dart';
 import 'components/mqtt_emqx_funcs.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   mqttConnect();
+  await Hive.initFlutter();
+  Hive.registerAdapter(AnnotatedDevicesDataAdapter());
+  await Hive.openBox<AnnotatedDevicesData>(devicesBox);
+
   runApp(const NurowApp());
 }
 
