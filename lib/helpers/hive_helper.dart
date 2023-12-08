@@ -7,9 +7,7 @@ import 'package:nurow_devp/models/annot_devices_data_model.dart';
 
 class HiveHelper {
   static saveDevicesLocally(List<AnnotatedDevicesData> savedDevicessData) {
-    // Save data to Hive local storage
     final Box devBox = Hive.box<AnnotatedDevicesData>(devicesBox);
-
     for (var data in savedDevicessData) {
       devBox.put(data.deviceID, data);
     }
@@ -17,15 +15,11 @@ class HiveHelper {
   }
 
   static fetchAllLocallySavedDevices() {
-    print('======================Retrieving message Data');
-    // Retrieve data from Hive local storage
+    print('======================Retrieving devices Data');
     final devBox = Hive.box<AnnotatedDevicesData>(devicesBox);
-    // Read all data from the box and add to a list
-    final List<AnnotatedDevicesData> messagesDataList = devBox.values.toList();
+    final List<AnnotatedDevicesData> deviceDataList = devBox.values.toList();
 
-    print('>>>>>>>>>>>>> Rectrieved messageData: ${messagesDataList.length}');
-    return messagesDataList;
+    print('>>>>>>>>>>>>> Retrieved deviceData: ${deviceDataList.length}');
+    return deviceDataList;
   }
-  /*
-*/
 }

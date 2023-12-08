@@ -265,6 +265,7 @@ class _AddDevicePageState extends State<AddDevicePage> {
                             deviceStates: [0],
                             isExtensionBox: dev.isExtensionBox,
                           );
+                          devicesToSave.add(data);
                         }
                         HiveHelper.saveDevicesLocally(devicesToSave);
 

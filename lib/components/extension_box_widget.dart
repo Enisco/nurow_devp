@@ -133,7 +133,8 @@ class _ExtensionBoxWidgetState extends State<ExtensionBoxWidget> {
                 LiteRollingSwitch(
                   textSize: 10.0,
                   width: 80,
-                  value: false,
+                  // value: false,
+                  value: commandDigits[0] == 1 ? true : false,
                   textOn: "ON",
                   textOff: "OFF",
                   colorOn: Colors.green,
@@ -158,7 +159,7 @@ class _ExtensionBoxWidgetState extends State<ExtensionBoxWidget> {
                 LiteRollingSwitch(
                   textSize: 10.0,
                   width: 80,
-                  value: commandDigits[1] == 0 ? true : false,
+                  value: commandDigits[1] == 1 ? true : false,
                   textOn: "ON",
                   textOff: "OFF",
                   colorOn: Colors.green,
@@ -183,7 +184,8 @@ class _ExtensionBoxWidgetState extends State<ExtensionBoxWidget> {
                 LiteRollingSwitch(
                   textSize: 10.0,
                   width: 80,
-                  value: false,
+                  // value: true,
+                  value: commandDigits[2] == 1 ? true : false,
                   textOn: "ON",
                   textOff: "OFF",
                   colorOn: Colors.green,
@@ -208,7 +210,8 @@ class _ExtensionBoxWidgetState extends State<ExtensionBoxWidget> {
                 LiteRollingSwitch(
                   textSize: 10.0,
                   width: 80,
-                  value: false,
+                  // value: false,
+                  value: commandDigits[3] == 1 ? true : false,
                   textOn: "ON",
                   textOff: "OFF",
                   textOnColor: Colors.white,
